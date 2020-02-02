@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+let cors = require('cors');
 
 const User = require('../models/User')
 
@@ -29,5 +30,7 @@ router.post('/', async (req, res) => {
       res.status(400).send(error)
   }
 })
+
+router.options('/', cors());
 
 module.exports = router;
