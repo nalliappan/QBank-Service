@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/nalliappan.ganeshan/reservations-orchestration"
 		}
 	],
 	"settings": {}
