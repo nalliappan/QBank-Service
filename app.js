@@ -10,6 +10,7 @@ const config = require('./config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var publishersRouter = require('./routes/publishers');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use(function(req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/publishers', publishersRouter);
 
 
 mongoose.connect(config.db.uri, {
