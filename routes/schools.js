@@ -4,6 +4,17 @@ let cors = require('cors');
 
 const School = require('../models/School');
 
+/**
+ * @swagger
+ * /schools:
+ *    post:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Schools
+ *      description: Create new school account
+ * 
+*/
 router.post('/', async (req, res) => {
   // Create a new school
   try {
@@ -16,6 +27,17 @@ router.post('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /schools:
+ *    get:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Schools
+ *      description: Get all school list.
+ * 
+*/
 router.get('/', async (req, res) => {
   try{
     const schools = await School.find({});

@@ -4,6 +4,17 @@ let cors = require('cors');
 
 const Publisher = require('../models/Publisher');
 
+/**
+ * @swagger
+ * /publishers:
+ *    post:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Publishers
+ *      description: Create new publisher
+ * 
+*/
 router.post('/', async (req, res) => {
   // Create a new publisher
   try {
@@ -15,6 +26,18 @@ router.post('/', async (req, res) => {
       res.status(400).send(error)
   }
 });
+
+/**
+ * @swagger
+ * /publishers:
+ *    get:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Publishers
+ *      description: This should return all publishers
+ * 
+*/
 
 router.get('/', async (req, res) => {
   try{

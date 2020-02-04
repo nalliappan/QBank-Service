@@ -6,6 +6,18 @@ const Book = require('../models/Book');
 const Chapter = require('../models/Chapter');
 const Class = require('../models/Class');
 
+
+/**
+ * @swagger
+ * /books:
+ *    post:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Books
+ *      description: Create new books with chapters and class information
+ * 
+*/
 router.post('/', async (req, res) => {
   // Create a new book
   try {
@@ -48,6 +60,18 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+/**
+ * @swagger
+ * /books:
+ *    get:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Books
+ *      description: Get all books
+ * 
+*/
 router.get('/', async (req, res) => {
   try{
     const books = await Book.find({}).populate({ path: 'chapters', model: Chapter })

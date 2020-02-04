@@ -4,7 +4,15 @@ let cors = require('cors');
 
 const User = require('../models/User')
 
-
+/**
+ * @swagger
+ * /users/generate-token:
+ *    post:
+ *      tags:
+ *        - Users
+ *      description: Generate access token using email and password.
+ * 
+*/
 router.post('/generate-token',  async (req, res, next) => {
   try {
     const { email, password } = req.body
@@ -19,6 +27,17 @@ router.post('/generate-token',  async (req, res, next) => {
 }
 });
 
+/**
+ * @swagger
+ * /users:
+ *    post:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Users
+ *      description: Create new user
+ * 
+*/
 router.post('/', async (req, res) => {
   // Create a new user
   try {

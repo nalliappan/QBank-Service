@@ -4,9 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let cors = require('cors');
-
+//const swaggerUi = require('swagger-ui-express');
 const mongoose = require('mongoose');
 const config = require('./config');
+const swaggerDoc = require('./swaggerDoc');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,6 +16,7 @@ var schoolsRouter = require('./routes/schools');
 var booksRouter = require('./routes/books');
 
 var app = express();
+const expressSwagger = require('express-swagger-generator')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(function(req, res, next) {
-  if(req.headers.authorization || req.originalUrl === '/users/generate-token'){
+  if(req.headers.authorization || req.originalUrl === '/' || req.originalUrl === '/users/generate-token' || req.originalUrl.includes('swagger') || req.originalUrl.includes('swagger-ui') || req.originalUrl.includes('api-docs') ){
     next();
   }else{
     next(createError(401));
@@ -38,6 +40,14 @@ app.use(function(req, res, next) {
 });
 
 app.use('/', indexRouter);
+
+
+//const swaggerDocument = require('./swagger.json');
+ 
+//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+swaggerDoc(app);
+
 app.use('/users', usersRouter);
 app.use('/publishers', publishersRouter);
 app.use('/schools', schoolsRouter);
@@ -72,5 +82,34 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+let options = {
+  swaggerDefinition: {
+      info: {
+          description: 'This is a sample server',
+          title: 'Swagger',
+          version: '1.0.0',
+      },
+      host: 'localhost:8091',
+      basePath: '/v1',
+      produces: [
+          "application/json",
+          "application/xml"
+      ],
+      schemes: ['http', 'https'],
+      securityDefinitions: {
+          JWT: {
+              type: 'apiKey',
+              in: 'header',
+              name: 'Authorization',
+              description: "",
+          }
+      }
+  },
+  basedir: __dirname, //app absolute path
+  files: ['./routes/**/*.js'] //Path to the API handle folder
+};
+
+expressSwagger(options)
 
 module.exports = app;
