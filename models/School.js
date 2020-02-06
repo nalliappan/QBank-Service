@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const User = require('./User').schema;
+const Publisher = require('./Publisher').schema;
 
 const schoolSchema = mongoose.Schema({
     name: {
@@ -48,6 +49,9 @@ const schoolSchema = mongoose.Schema({
     },
     users:[
         {type: mongoose.Schema.Types.ObjectId, ref: User}
+    ],
+    pubId: [
+        {type: mongoose.Schema.Types.ObjectId, ref: Publisher}
     ]
 })
 
