@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const School = require('./School');
 
 const userSchema = mongoose.Schema({
     name: {
@@ -58,8 +59,9 @@ userSchema.methods.generateAuthToken = async function() {
 
 userSchema.statics.findByCredentials = async (email, password) => {
     // Search for a user by email and password.
-    const user = await User.findOne({ email} )
-    console.log(user);
+    const user = await User.findOne({ email} );
+    
+    //console.log(school);
     if (!user) {
         throw new Error({ error: 'Invalid login credentials' })
     }
@@ -67,7 +69,7 @@ userSchema.statics.findByCredentials = async (email, password) => {
     if (!isPasswordMatch) {
         throw new Error({ error: 'Invalid login credentials' })
     }
-    return user
+    return user;
 }
 
 //mongoose.set({autoCreate: true});

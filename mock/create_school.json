@@ -1,0 +1,16 @@
+{
+    "name" : "School 2",
+    "email" : "school2@gmail.com",
+    "address1": "",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "country": "India",
+    "logo" : "pub2.png",
+    "phone" : "+982131233212",
+    "description": "CBSE school..",
+    "users":[{
+        "name" : "School 2",
+        "email" : "school2@gmail.com",
+        "password" : "school2"
+    }]
+}

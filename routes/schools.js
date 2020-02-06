@@ -3,7 +3,7 @@ var router = express.Router();
 let cors = require('cors');
 
 const School = require('../models/School');
-
+const User = require('../models/User');
 /**
  * @swagger
  * /schools:
@@ -18,9 +18,23 @@ const School = require('../models/School');
 router.post('/', async (req, res) => {
   // Create a new school
   try {
-      const school = new School(req.body)
-      await school.save()
-      res.status(201).send({ msg: "School information created successfully." });
+    const schoolRequest = {...req.body, users: []}
+    const school = new School(schoolRequest);
+    const newSchool = await school.save();
+    
+    if(req.body.users && req.body.users.length > 0){
+      req.body.users.map((user) => {
+        let userModel =  new User({...user, role: 'school'});
+        userModel.save().then((uAdded) => {
+          School.findByIdAndUpdate(newSchool._id, 
+            { $push: {users : uAdded._id} },
+            {new : true}, (err, user) => {
+              console.log(err);
+          });
+        });
+      });
+    }
+      res.status(201).send({ msg: "School account created successfully." });
   } catch (error) {
       console.log(error);
       res.status(400).send(error)

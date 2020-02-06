@@ -3,6 +3,7 @@ var router = express.Router();
 let cors = require('cors');
 
 const Publisher = require('../models/Publisher');
+const User = require('../models/User');
 
 /**
  * @swagger
@@ -18,9 +19,24 @@ const Publisher = require('../models/Publisher');
 router.post('/', async (req, res) => {
   // Create a new publisher
   try {
-      const publisher = new Publisher(req.body)
-      await publisher.save()
-      res.status(201).send({ msg: "Publisher created successfully." });
+      const publisherRequest = {...req.body, users: []}
+      const publisher = new Publisher(publisherRequest);
+      const newPublisher = await publisher.save();
+      
+      if(req.body.users && req.body.users.length > 0){
+        req.body.users.map((user) => {
+          let userModel =  new User({...user, role: 'publisher'});
+          userModel.save().then((uAdded) => {
+            Publisher.findByIdAndUpdate(newPublisher._id, 
+              { $push: {users : uAdded._id} },
+              {new : true}, (err, user) => {
+                console.log(err);
+            });
+          });
+        });
+      }
+
+      res.status(201).send({ msg: "Publisher account created successfully." });
   } catch (error) {
       console.log(error);
       res.status(400).send(error)
