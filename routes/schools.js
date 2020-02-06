@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 let cors = require('cors');
@@ -18,7 +19,13 @@ const User = require('../models/User');
 router.post('/', async (req, res) => {
   // Create a new school
   try {
-    const schoolRequest = {...req.body, users: []}
+
+    const schoolRequest = {...req.body, users: [], pubId: []}
+
+    if(req.body.pubId && req.body.pubId.length > 0){
+      req.body.pubId.map((pid) => schoolRequest.pubId.push(mongoose.Types.ObjectId(pid)));
+    }
+
     const school = new School(schoolRequest);
     const newSchool = await school.save();
     

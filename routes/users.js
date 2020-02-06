@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 let cors = require('cors');

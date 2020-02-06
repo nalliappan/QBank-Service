@@ -12,5 +12,9 @@
         "name" : "School 2",
         "email" : "school2@gmail.com",
         "password" : "school2"
-    }]
+    }],
+    "pubId":[
+        "5e3bb14aac250a100d920049",
+        "5e37285f5bd10e9d0b92606c"
+    ]
 }
