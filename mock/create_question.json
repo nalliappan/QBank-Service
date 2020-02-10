@@ -1,0 +1,12 @@
+{
+    "description" : "What are the postulates of Bohr's model of an atom?",
+    "questionTypeId" : "5e390ef56bee3c5c42a52876",
+    "subjectId": "5e390d2152c12551163a0349",
+    "classId": "5e3800d1d73cd9195c0fd83b",
+    "bookId": "5e3800d1d73cd9195c0fd838",
+    "chapterId": "5e3800d1d73cd9195c0fd83a",
+    "answers" : ["Postulates of Bohr's Model of an Atom In an atom, electrons (negatively charged) revolve around the positively charged nucleus in a definite circular path called as orbits or shells."],
+    "instruction" : "",
+    "questionImage": "",
+    "questionMark": 1
+}

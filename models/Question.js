@@ -3,9 +3,10 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const Chapter = require('./Book').schema;
+const Book = require('./Book').schema;
 const Chapter = require('./Chapter').schema;
-const Chapter = require('./Chapter').schema;
+const Subject = require('./Subject').schema;
+//const Chapter = require('./Chapter').schema;
 const Class = require('./Class').schema;
 const QuestionType = require('./QuestionType').schema;
 
@@ -15,32 +16,35 @@ const questionSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    questionType: {
-        type: mongoose.SchemaTypes.ObjectId,
+    questionTypeId: [{
+        type: mongoose.Schema.Types.ObjectId,
         ref: QuestionType,
         required: true
-    },
-    subject: {
-        type: mongoose.SchemaTypes.ObjectId,
+    }],
+    subjectId: [{
+        type: mongoose.Types.ObjectId,
         ref: Subject,
         required: true
-    },
-    class: {
-        type: mongoose.SchemaTypes.ObjectId,
+    }],
+    classId: [{
+        type: mongoose.Types.ObjectId,
         ref: Class,
         required: true
-    },
-    book: {
-        type: mongoose.SchemaTypes.ObjectId,
+    }],
+    bookId: [{
+        type: mongoose.Types.ObjectId,
         ref: Book,
         required: true
-    },
-    chapter: {
-        type: mongoose.SchemaTypes.ObjectId,
+    }],
+    chapterId: [{
+        type: mongoose.Types.ObjectId,
         ref: Chapter,
         required: true
-    },
-    answers: [{type: String}]
+    }],
+    answers: [{type: String}],
+    instruction: String,
+    questionImage: String,
+    questionMark: Number
 })
 
 

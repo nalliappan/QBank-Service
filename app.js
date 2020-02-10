@@ -16,6 +16,8 @@ var schoolsRouter = require('./routes/schools');
 var booksRouter = require('./routes/books');
 var subjectsRouter = require('./routes/subjects');
 var qTypeRouter = require('./routes/questionTypes');
+var questionRouter = require('./routes/questions');
+var questionPapersRouter = require('./routes/questionPapers');
 
 var app = express();
 const expressSwagger = require('express-swagger-generator')(app);
@@ -33,13 +35,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const whiteList = [
   '/users/login',
-  '/swagger',
-  '/swagger-ui',
-  '/api-docs'
+  '/swagger/',
+  '/swagger-ui/',
+  '/api-docs/'
 ]
 
 app.use(function(req, res, next) {
-  if(req.headers.authorization || req.originalUrl === '/' || whiteList.indexOf(req.originalUrl) !== -1){
+  if(req.headers.authorization || req.originalUrl === '/' || whiteList.filter(item => req.originalUrl.indexOf(item) !== -1).length > 0){
     next();
   }else{
     next(createError(401));
@@ -61,6 +63,8 @@ app.use('/schools', schoolsRouter);
 app.use('/books', booksRouter);
 app.use('/subjects', subjectsRouter);
 app.use('/question-types', qTypeRouter);
+app.use('/questions', questionRouter);
+app.use('/question-papers', questionPapersRouter);
 
 mongoose.connect(config.db.uri, {
     useNewUrlParser: true,
