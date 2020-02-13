@@ -46,7 +46,15 @@ const questionPaperSchema = mongoose.Schema({
         {
             type: mongoose.SchemaTypes.ObjectId, ref: Section
         }
-    ]
+    ],
+    createdDate: {
+        type: mongoose.SchemaTypes.Date,
+        default: Date.now()
+    },
+    title:{
+        type: mongoose.SchemaTypes.String,
+        required: true
+    }
 })
 
 
