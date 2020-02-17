@@ -18,6 +18,7 @@ var subjectsRouter = require('./routes/subjects');
 var qTypeRouter = require('./routes/questionTypes');
 var questionRouter = require('./routes/questions');
 var questionPapersRouter = require('./routes/questionPapers');
+var classRouter = require('./routes/classes');
 
 var app = express();
 const expressSwagger = require('express-swagger-generator')(app);
@@ -65,6 +66,7 @@ app.use('/subjects', subjectsRouter);
 app.use('/question-types', qTypeRouter);
 app.use('/questions', questionRouter);
 app.use('/question-papers', questionPapersRouter);
+app.use('/classes', classRouter);
 
 mongoose.connect(config.db.uri, {
     useNewUrlParser: true,

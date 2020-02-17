@@ -8,6 +8,11 @@ const Footer = require('../models/Footer');
 const QuestionPaper = require('../models/QuestionPaper');
 const QuestionSetting = require('../models/QuestionSetting');
 const Section = require('../models/Section');
+const Class = require('../models/Class');
+const Subject = require('../models/Subject');
+const Book = require('../models/Book');
+const Chapter = require('../models/Chapter');
+const QuestionType = require('../models/QuestionType');
 /**
  * @swagger
  * /question-papers:
@@ -93,6 +98,34 @@ router.get('/', async (req, res) => {
     res.status(400).send(error);
   }
 });
+
+/**
+ * @swagger
+ * /question-papers/utils:
+ *    get:
+ *      security:
+ *      - bearerAuth: []
+ *      tags:
+ *        - Questions 
+ *      description: Get all classes, subjects, books and chapters
+ * 
+*/
+router.get('/utils', async (req, res) => {
+  try{
+    const response = {
+      classes: await Class.find({}),
+      subjects: await Subject.find({}),
+      books: await Book.find({}),
+      chapters: await Chapter.find({}),
+      qTypes: await QuestionType.find({})
+    };
+    res.status(200).send(response);
+  }catch(error){
+    console.log(error);
+    res.status(400).send(error);
+  }
+});
+
 
 router.options('/', cors());
 
