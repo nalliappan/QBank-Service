@@ -22,6 +22,8 @@
     "validator": "^12.2.0"
   },
   "devDependencies": {
-    "express-swagger-generator": "^1.1.17"
+    "express-swagger-generator": "^1.1.17",
+    "env-cmd": "^10.1.0",
+    "nodemon" : "^2.0.2"
   }
 }
