@@ -1,0 +1,84 @@
+{
+    "class": "5e3800d1d73cd9195c0fd83b",
+    "title": "Test Paper1",
+    "subject": "5e390d2152c12551163a0349",
+    "books": [
+        {
+            "chapters": [
+                "5e3800d1d73cd9195c0fd839",
+                "5e3800d1d73cd9195c0fd83a"
+            ],
+            "class": [
+                "5e3800d1d73cd9195c0fd83b"
+            ],
+            "_id": "5e3800d1d73cd9195c0fd838",
+            "name": "Book1",
+            "author": "author1",
+            "description": "description",
+            "__v": 0
+        }
+    ],
+    "sections": [
+        {
+            "secId": "A",
+            "settings": [
+                {
+                    "questionType": "5e390f006bee3c5c42a52877",
+                    "mark": 2,
+                    "numberOfQuestions": "10"
+                },
+                {
+                    "questionType": "5e390f3a6bee3c5c42a52878",
+                    "mark": 5,
+                    "numberOfQuestions": "10"
+                },
+                {
+                    "questionType": "5e39161de3acb371eda8edde",
+                    "mark": 1,
+                    "numberOfQuestions": "30"
+                }
+            ],
+            "chapters": [
+                {
+                    "_id": "5e3800d1d73cd9195c0fd839",
+                    "name": "c1",
+                    "description": "c1",
+                    "__v": 0
+                }
+            ]
+        },
+        {
+            "secId": "B",
+            "settings": [
+                {
+                    "questionType": "5e390f696bee3c5c42a5287a",
+                    "mark": 20,
+                    "numberOfQuestions": "5"
+                }
+            ],
+            "chapters": [
+                {
+                    "_id": "5e3800d1d73cd9195c0fd83a",
+                    "name": "c2",
+                    "description": "c2",
+                    "__v": 0
+                }
+            ]
+        }
+    ],
+    "totalMarks": "200",
+    "duration": "180",
+    "userId": "5e3695257788c41b023c3f04",
+    "header": {
+        "title": "School Name",
+        "subTitle": "",
+        "description": "",
+        "image": "sc.png"
+    },
+    "footer": {
+        "title": "@School Name",
+        "subTitle": "",
+        "description": "",
+        "image": "sc.png"
+    }
+}

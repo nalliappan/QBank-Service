@@ -1,28 +1,45 @@
+const mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 let cors = require('cors');
 
-const User = require('../models/User')
+const User = require('../models/User');
+const School = require('../models/School');
+const Publisher = require('../models/Publisher');
+const UserResponse = require('../response/users');
 
 /**
  * @swagger
- * /users/generate-token:
+ * /users/login:
  *    post:
  *      tags:
  *        - Users
- *      description: Generate access token using email and password.
+ *      description: login and generate access token using email and password.
  * 
 */
-router.post('/generate-token',  async (req, res, next) => {
+router.post('/login',  async (req, res, next) => {
   try {
     const { email, password } = req.body
-    const user = await User.findByCredentials(email, password)
+    const user = await User.findByCredentials(email, password);
+    const userInfo = user.toJSON();
+    let profile;
+    
+    if(userInfo.role === 'school'){
+         profile = await School.findOne({ "users": { "$in": [mongoose.Types.ObjectId(userInfo._id)] } });
+    }else if(userInfo.role === 'publisher'){
+         profile = await Publisher.findOne({ "users": { "$in": [mongoose.Types.ObjectId(userInfo._id)] } });
+    }
+        
     if (!user) {
         return res.status(401).send({error: 'Login failed! Check authentication credentials'})
     }
-    const token = await user.generateAuthToken()
-    res.send({ user, token })
+    const token = await user.generateAuthToken();
+    
+    const response = new UserResponse(user, profile).getLoginResponse();
+
+    res.send({ ...response, token });
 } catch (error) {
+    console.log(error)
     res.status(400).send(error)
 }
 });

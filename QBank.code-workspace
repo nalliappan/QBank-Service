@@ -14,6 +14,21 @@
 		},
 		{
 			"path": "/Users/nalliappan.ganeshan/reservations-orchestration"
+		},
+		{
+			"path": "/Users/nalliappan.ganeshan/Personal/chartBotApp"
+		},
+		{
+			"path": "/Users/nalliappan.ganeshan/Personal/chatbot"
+		},
+		{
+			"path": "/Users/nalliappan.ganeshan/CMC/tmc-medallion-fulfillment"
+		},
+		{
+			"path": "/Users/nalliappan.ganeshan/CMC/cmc-oms-plugin"
+		},
+		{
+			"path": "/Users/nalliappan.ganeshan/ocean-hospitality-ui/ocean-hospitality-ui-new"
 		}
 	],
 	"settings": {}

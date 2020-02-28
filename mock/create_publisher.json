@@ -1,0 +1,16 @@
+{
+    "name" : "Publisher 2",
+    "email" : "publisher2@gmail.com",
+    "address1": "",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "country": "India",
+    "logo" : "pub2.png",
+    "phone" : "+982131233212",
+    "description": "Book Publishers..",
+    "users":[{
+        "name" : "Publisher 2",
+        "email" : "publisher2@gmail.com",
+        "password" : "publisher2"
+    }]
+}

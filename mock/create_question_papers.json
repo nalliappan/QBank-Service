@@ -1,0 +1,35 @@
+{
+    "userId" : "5e3695257788c41b023c3f04",
+    "header" : {
+        "title" : "",
+        "subTitle": "",
+        "description": "",
+        "image": ""
+    },
+    "footer" : {
+        "title" : "",
+        "subTitle": "",
+        "description": "",
+        "image": ""
+    },
+    "school": "",
+    "class" : "",
+    "subject" : "",
+    "totalMarks" : 100,
+    "instruction" : "",
+    "duration" : 180,
+    "books" : [],
+    "sections" : [
+        {
+            "chapters" : [],
+            "settings" : [{
+                "questionType" : "",
+                "numberOfQuestions" : 2,
+                "marks" : 2
+            }],
+            "assignedQuestions": [],
+            "instruction" : ""
+        }
+    ]
+}
+

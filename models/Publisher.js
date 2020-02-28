@@ -3,6 +3,8 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const User = require('./User').schema;
+
 const publisherSchema = mongoose.Schema({
     name: {
         type: String,
@@ -43,7 +45,10 @@ const publisherSchema = mongoose.Schema({
     },
     description: {
         type: String
-    }
+    },
+    users:[
+        {type: mongoose.Schema.Types.ObjectId, ref: User}
+    ]
 })
 
 
